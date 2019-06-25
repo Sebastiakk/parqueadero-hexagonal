@@ -21,12 +21,23 @@ disableConcurrentBuilds()
  stage('Checkout') {
  steps{
  echo "------------>Checkout<------------"
+        checkout([$class: 'GitSCM', 
+        branches: [[name: '*/master']],
+        doGenerateSubmoduleConfigurations: false, 
+        extensions: [], 
+        gitTool: 'Git_Centos', 
+        submoduleCfg: [], 
+        userRemoteConfigs: 
+            [[credentialsId: 'GitHub_sebastiakk', url:'https://github.com/Sebastiakk/parqueadero-hexagonal.git']]])
+}
+
  }
  }
  stage('Unit Tests') {
- steps{
- echo "------------>Unit Tests<------------"
- }
+    steps{
+        echo "------------>Unit Tests<------------"
+        sh 'gradle --b ./build.gradle test'
+    }
  }
  stage('Integration Tests') {
  steps {
@@ -58,7 +69,10 @@ Prácticas Técnicas (Gerencia Técnica)
  echo 'This will run only if successful'
  }
  failure {
- echo 'This will run only if failed'
+				mail(to: 'sebastian.ramirez@ceiba.com.co',
+				body:"Build failed in Jenkins: Project: ${env.JOB_NAME} Build /n Number: ${env.BUILD_NUMBER} URL de build: ${env.BUILD_NUMBER}/n/nPlease go to ${env.BUILD_URL} and verify the build",
+				subject: "ERROR CI: ${env.JOB_NAME}")
+			}
  }
  unstable {
  echo 'This will run only if the run was marked as unstable'
