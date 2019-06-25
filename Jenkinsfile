@@ -49,28 +49,28 @@ pipeline{
 					}
 				}
 			}
-			stage('Test Unitarios -Cobertura'){
-				parallel {
-					stage('Test- Cobertura backend'){
-						steps {
-							echo '------------>test backend<------------'
-							dir("${PROJECT_PATH_BACK}"){
-								sh 'gradle --stacktrace test'
+			// stage('Test Unitarios -Cobertura'){
+			// 	parallel {
+			// 		stage('Test- Cobertura backend'){
+			// 			steps {
+			// 				echo '------------>test backend<------------'
+			// 				dir("${PROJECT_PATH_BACK}"){
+			// 					sh 'gradle --stacktrace test'
 								
-							}
-						}
-					}
-				}
-			}
+			// 				}
+			// 			}
+			// 		}
+			// 	}
+			// }
 			
-			stage('Sonar Analysis'){
-				steps{
-					echo '------------>Analisis de código estático<------------'
-					  withSonarQubeEnv('Sonar') {
-                     sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
-                     }
-				}
-			}
+			// stage('Sonar Analysis'){
+			// 	steps{
+			// 		echo '------------>Analisis de código estático<------------'
+			// 		  withSonarQubeEnv('Sonar') {
+            //          sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
+            //          }
+			// 	}
+			// }
 		
 		
 
