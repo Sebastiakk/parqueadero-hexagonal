@@ -23,7 +23,7 @@ pipeline {
 				extensions: [],
 				​gitTool: 'Git_Centos'​,
 				submoduleCfg: [],
-				userRemoteConfigs: [[​credentialsId: 'GitHub_sebastiakk', url: 'https://github.com/Sebastiakk/parqueadero-hexagonal.git']]]) 
+				userRemoteConfigs: [[​credentialsId: 'GitHub_sebastiakk', url: 'https://github.com/Sebastiakk/parqueadero-hexagonal']]]) 
                 sh 'gradle clean'				
 			}     
 		}       
