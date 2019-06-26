@@ -22,7 +22,7 @@ public class Vehiculo {
     private InterfaceVehiculo vehiculo;
 
     @GetMapping()
-    public Object get_all_vehiculo() {
+    public Object getAll() {
         try {
             return HttpRespuestas._200(vehiculo.findAll(), null);
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class Vehiculo {
     }
 
     @GetMapping("/{id}")
-    public Object get_vehiculo(@PathVariable long id) {
+    public Object getOne(@PathVariable long id) {
         try {
             return HttpRespuestas._200(vehiculo.findById(id), null);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class Vehiculo {
     }
 
     @PostMapping("/")
-    public Object crear_vehiculo(@RequestBody EntityVehiculo body) {
+    public Object crear(@RequestBody EntityVehiculo body) {
         try {
             return HttpRespuestas._200(vehiculo.save(body), null);
         } catch (Exception e) {

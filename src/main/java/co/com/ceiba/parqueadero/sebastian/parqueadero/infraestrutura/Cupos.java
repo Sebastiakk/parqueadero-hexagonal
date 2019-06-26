@@ -22,7 +22,7 @@ public class Cupos {
     private InterfaceCupos cupos;
 
     @GetMapping()
-    public Object get_all_cupos() {
+    public Object getAll() {
         try {
             return HttpRespuestas._200(cupos.findAll(), null);
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class Cupos {
     }
 
     @GetMapping("/{id}")
-    public Object get_cupos(@PathVariable long id) {
+    public Object getOne(@PathVariable long id) {
         try {
             return HttpRespuestas._200(cupos.findById(id), null);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class Cupos {
     }
 
     @PostMapping("/")
-    public Object crear_cupo(@RequestBody EntityCupos body) {
+    public Object postCrear(@RequestBody EntityCupos body) {
         try {
             return HttpRespuestas._200(cupos.save(body), null);
         } catch (Exception e) {

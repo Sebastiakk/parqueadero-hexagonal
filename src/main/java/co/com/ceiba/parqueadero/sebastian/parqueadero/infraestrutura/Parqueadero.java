@@ -22,7 +22,7 @@ public class Parqueadero {
     private InterfaceParqueadero parqueadero;
 
     @GetMapping()
-    public Object get_all_parqueadero() {
+    public Object getAll() {
         try {
             return HttpRespuestas._200(parqueadero.findAll(), null);
         } catch (Exception e) {
@@ -31,7 +31,7 @@ public class Parqueadero {
     }
 
     @GetMapping("/{id}")
-    public Object get_parqueadero(@PathVariable long id) {
+    public Object getOne(@PathVariable long id) {
         try {
             return HttpRespuestas._200(parqueadero.findById(id), null);
         } catch (Exception e) {
@@ -40,7 +40,7 @@ public class Parqueadero {
     }
 
     @PostMapping("/")
-    public Object crear_parqueadero(@RequestBody EntityParqueadero body) {
+    public Object crear(@RequestBody EntityParqueadero body) {
         try {
             return HttpRespuestas._200(parqueadero.save(body), null);
         } catch (Exception e) {
