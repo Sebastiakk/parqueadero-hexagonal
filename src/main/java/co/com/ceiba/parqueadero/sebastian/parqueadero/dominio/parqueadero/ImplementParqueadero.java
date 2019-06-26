@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.repository.CrudRepository;
 
 /**
  * ImplementParqueadero
@@ -14,7 +13,7 @@ import org.springframework.data.repository.CrudRepository;
 public class ImplementParqueadero implements InterfaceParqueadero {
 
     @Autowired
-    private CrudRepository<EntityParqueadero, Long> parqueadero;
+    private DaoParqueadero parqueadero;
 
     @Override
     @Transactional(readOnly = true)

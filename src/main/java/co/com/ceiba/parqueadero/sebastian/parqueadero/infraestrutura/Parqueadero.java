@@ -1,8 +1,8 @@
-package co.com.ceiba.parqueadero.sebastian.parqueadero.controles;
+package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.cupos.EntityCupos;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.cupos.InterfaceCupos;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.interfaces.HttpRespuestas;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.parqueadero.EntityParqueadero;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.parqueadero.InterfaceParqueadero;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.HttpRespuestas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,33 +16,33 @@ import org.springframework.web.bind.annotation.RestController;
  * ControlParqueadero
  */
 @RestController
-@RequestMapping(path = "/cupos", produces = "application/json")
-public class ControlCupos {
+@RequestMapping(path = "/parqueadero", produces = "application/json")
+public class Parqueadero {
     @Autowired()
-    private InterfaceCupos cupos;
+    private InterfaceParqueadero parqueadero;
 
     @GetMapping()
-    public Object get_all_cupos() {
+    public Object get_all_parqueadero() {
         try {
-            return HttpRespuestas._200(cupos.findAll(), null);
+            return HttpRespuestas._200(parqueadero.findAll(), null);
         } catch (Exception e) {
             return HttpRespuestas._500(e.toString());
         }
     }
 
     @GetMapping("/{id}")
-    public Object get_cupos(@PathVariable long id) {
+    public Object get_parqueadero(@PathVariable long id) {
         try {
-            return HttpRespuestas._200(cupos.findById(id), null);
+            return HttpRespuestas._200(parqueadero.findById(id), null);
         } catch (Exception e) {
             return HttpRespuestas._500(e.toString());
         }
     }
 
     @PostMapping("/")
-    public Object crear_cupo(@RequestBody EntityCupos body) {
+    public Object crear_parqueadero(@RequestBody EntityParqueadero body) {
         try {
-            return HttpRespuestas._200(cupos.save(body), null);
+            return HttpRespuestas._200(parqueadero.save(body), null);
         } catch (Exception e) {
             return HttpRespuestas._500(e.toString());
         }

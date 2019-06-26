@@ -1,8 +1,8 @@
-package co.com.ceiba.parqueadero.sebastian.parqueadero.controles;
+package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.vehiculo.EntityVehiculo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.vehiculo.InterfaceVehiculo;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.interfaces.HttpRespuestas;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.HttpRespuestas;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @RequestMapping(path = "/vehiculo", produces = "application/json")
-public class ControlVehiculo {
+public class Vehiculo {
     @Autowired()
     private InterfaceVehiculo vehiculo;
 

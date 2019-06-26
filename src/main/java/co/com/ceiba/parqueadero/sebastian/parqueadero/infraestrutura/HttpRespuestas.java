@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.sebastian.parqueadero.interfaces;
+package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura;
 
 import java.util.HashMap;
 
