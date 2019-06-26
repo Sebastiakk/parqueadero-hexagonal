@@ -49,30 +49,22 @@ pipeline{
 					}
 				}
 			}
-			// stage('Test Unitarios -Cobertura'){
-			// 	parallel {
-			// 		stage('Test- Cobertura backend'){
-			// 			steps {
-			// 				echo '------------>test backend<------------'
-			// 				dir("${PROJECT_PATH_BACK}"){
-			// 					sh 'gradle --stacktrace test'
-								
-			// 				}
-			// 			}
-			// 		}
-			// 	}
-			// }
-			
-			stage('Sonar Analysis'){
-				steps{
-					echo '------------>Analisis de código estático<------------'
-					  withSonarQubeEnv('Sonar') {
-                     sh "${tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
-                     }
-				}
-			}
-		
-		stage('Static Code Analysis') {
+			stage('Unit Tests') {
+			steps{
+		 			echo "------------>Unit Tests<------------"
+		 			sh 'gradle --stacktrace test'
+					junit '**/build/test-results/test/*.xml' //aggregate test results - JUnit
+					step( [ $class: 'JacocoPublisher' ] )
+	 			}
+	 	}
+	 
+	 	stage('Integration Tests') {
+	 		steps {
+	 				echo "------------>Integration Tests<------------"
+	 			}
+		}
+	 
+	 	stage('Static Code Analysis') {
 	 		steps{
 		 			echo '------------>Análisis de código estático<------------'
 		 			withSonarQubeEnv('Sonar') {
