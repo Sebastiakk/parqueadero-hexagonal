@@ -32,10 +32,14 @@ public class ModelCupos {
 
     private void validarArgumentos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
             int cilindraje) {
+        // Valida que la plata este en la data
         ValidarArgumentos.ExeptionRequired(placa, Constantes.REQUIRED_PLACA);
+        // Valida que el tipo de vehiculo este en la data
         ValidarArgumentos.ExeptionRequired(tipoVehiculo, Constantes.REQUIRED_TIPO_VEHICULO);
+        // Valida que el tipo de vehiculo sea correcto "Moto" o "Carro"
         ValidarArgumentos.ExeptionTipoVehiculo(tipoVehiculo, Constantes.TIPOS_VEHICULO);
 
+        // Si el tipo de vehiculo es moto valida que el cilindraje sea diferente de cero
         if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_MOTO)) {
             ValidarArgumentos.ExeptionDiferenteCero(cilindraje, Constantes.REQUIRED_CILINDRAJE);
         }

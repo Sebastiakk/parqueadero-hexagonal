@@ -30,7 +30,7 @@ public class ValidarArgumentos {
     }
 
     public static void ExeptionTipoVehiculo(String data, String mensaje) {
-        if (!data.equals(Constantes.TIPO_VEHICULO_CARRO) && !data.equals(Constantes.TIPO_VEHICULO_CARRO)) {
+        if (!data.equals(Constantes.TIPO_VEHICULO_CARRO) && !data.equals(Constantes.TIPO_VEHICULO_MOTO)) {
             throw new ExeptionTipoVehiculo(mensaje);
         }
     }
