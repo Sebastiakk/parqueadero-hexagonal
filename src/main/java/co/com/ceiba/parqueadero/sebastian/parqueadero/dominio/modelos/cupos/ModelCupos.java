@@ -2,6 +2,8 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos;
 
 import java.util.Date;
 
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
+
 /**
  * Cupos
  */
@@ -12,16 +14,40 @@ public class ModelCupos {
     private Date horaEntrada;
     private Date horaSalida;
     private String tipoVehiculo;
+    private int cilindraje;
 
     public ModelCupos() {
     }
 
-    public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo) {
+    public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
+            int cilindraje) {
+
+        this.validarArgumentos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje);
         this.idCupo = idCupo;
         this.placa = placa;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
         this.tipoVehiculo = tipoVehiculo;
+    }
+
+    private void validarArgumentos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
+            int cilindraje) {
+        ValidarArgumentos.ExeptionRequired(placa, Constantes.REQUIRED_PLACA);
+        ValidarArgumentos.ExeptionRequired(tipoVehiculo, Constantes.REQUIRED_TIPO_VEHICULO);
+        ValidarArgumentos.ExeptionTipoVehiculo(tipoVehiculo, Constantes.TIPOS_VEHICULO);
+
+        if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_MOTO)) {
+            ValidarArgumentos.ExeptionDiferenteCero(cilindraje, Constantes.REQUIRED_CILINDRAJE);
+        }
+
+    }
+
+    public int getCilindraje() {
+        return cilindraje;
+    }
+
+    public void setCilindraje(int cilindraje) {
+        this.cilindraje = cilindraje;
     }
 
     public long getIdCupo() {

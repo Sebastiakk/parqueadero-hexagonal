@@ -14,7 +14,7 @@ public class RegisterHandler {
 
     public void create(RegisterCommand register) {
         ModelCupos cupo = new ModelCupos(register.getIdCupo(), register.getPlaca(), register.getHoraEntrada(),
-                register.getHoraSalida(), register.getTipoVehiculo());
+                register.getHoraSalida(), register.getTipoVehiculo(), register.getCilindraje());
 
         this.servicioCupos.create(cupo);
     }

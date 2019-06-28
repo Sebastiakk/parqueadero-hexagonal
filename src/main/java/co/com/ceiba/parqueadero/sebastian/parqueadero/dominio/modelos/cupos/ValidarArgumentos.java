@@ -16,9 +16,15 @@ public class ValidarArgumentos {
         }
     }
 
-    public static void ExeptionRequired(String data, String mensaje) {
+    public static void ExeptionRequired(Object data, String mensaje) {
         if (data == null || data.equals("")) {
             throw new ExeptionRequired(mensaje);
+        }
+    }
+
+    public static void ExeptionDiferenteCero(int data, String mensaje) {
+        if (data == 0) {
+            throw new ExeptionDiferenteCero(mensaje);
         }
     }
 

@@ -8,16 +8,19 @@ public class RegisterCommand {
         private Date horaEntrada;
         private Date horaSalida;
         private String tipoVehiculo;
+        private int cilindraje;
 
         public RegisterCommand() {
         }
 
-        public RegisterCommand(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo) {
+        public RegisterCommand(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
+                        int cilindraje) {
                 this.idCupo = idCupo;
                 this.placa = placa;
                 this.horaEntrada = horaEntrada;
                 this.horaSalida = horaSalida;
                 this.tipoVehiculo = tipoVehiculo;
+                this.cilindraje = cilindraje;
         }
 
         public long getIdCupo() {
@@ -58,6 +61,14 @@ public class RegisterCommand {
 
         public void setTipoVehiculo(String tipoVehiculo) {
                 this.tipoVehiculo = tipoVehiculo;
+        }
+
+        public int getCilindraje() {
+                return this.cilindraje;
+        }
+
+        public void setCilindraje(int cilindraje) {
+                this.cilindraje = cilindraje;
         }
 
 }
