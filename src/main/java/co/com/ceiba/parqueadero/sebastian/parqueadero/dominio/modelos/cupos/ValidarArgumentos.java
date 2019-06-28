@@ -8,7 +8,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones
  */
 public class ValidarArgumentos {
 
-    public ValidarArgumentos() {
+    private ValidarArgumentos() {
     }
 
     public static void exeptionPlaca(Object value, String mensaje) {

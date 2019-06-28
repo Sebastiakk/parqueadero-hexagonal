@@ -5,7 +5,9 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
  */
 public class Constantes {
 
-    public Constantes() {
+    // No se puede instanciar porque lo unico que se necesita son las constantes
+    private Constantes() {
+        throw new IllegalStateException("No se puede instanciar");
     }
 
     public static final String REQUIRED_PLACA = "La placa es requerida";
