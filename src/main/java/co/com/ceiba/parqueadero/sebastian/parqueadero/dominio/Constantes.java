@@ -3,7 +3,7 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
 /**
  * Constantes
  */
-public class Constantes {
+public final class Constantes {
 
     // No se puede instanciar porque lo unico que se necesita son las constantes
     private Constantes() {

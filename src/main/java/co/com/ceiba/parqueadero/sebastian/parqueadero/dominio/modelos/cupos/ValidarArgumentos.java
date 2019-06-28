@@ -6,9 +6,10 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones
 /**
  * ValidadorArgumentos
  */
-public class ValidarArgumentos {
+public final class ValidarArgumentos {
 
     private ValidarArgumentos() {
+        throw new IllegalStateException("No se puede instanciar");
     }
 
     public static void exeptionPlaca(Object value, String mensaje) {
