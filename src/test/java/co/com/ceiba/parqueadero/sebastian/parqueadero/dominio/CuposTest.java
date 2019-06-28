@@ -14,11 +14,11 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones
  * CuposTest
  */
 public class CuposTest {
-    CuposBuildTest cupoBuild;
+    CuposBuild cupoBuild;
 
     @Before
     public void antes() {
-        this.cupoBuild = new CuposBuildTest();
+        this.cupoBuild = new CuposBuild();
     }
 
     @Test

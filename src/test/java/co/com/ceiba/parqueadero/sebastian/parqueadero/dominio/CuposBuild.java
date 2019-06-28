@@ -7,7 +7,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Mode
 /**
  * CuposBuildTest
  */
-public class CuposBuildTest {
+public class CuposBuild {
     private long idCupo;
     private String placa;
     private Date horaEntrada;
@@ -15,7 +15,7 @@ public class CuposBuildTest {
     private String tipoVehiculo;
     private int cilindraje;
 
-    public CuposBuildTest() {
+    public CuposBuild() {
         this.idCupo = 1;
         this.placa = "SEB-123";
         this.horaEntrada = new Date();
@@ -24,32 +24,32 @@ public class CuposBuildTest {
         this.cilindraje = 150;
     }
 
-    public CuposBuildTest idCupo(long idCupo) {
+    public CuposBuild idCupo(long idCupo) {
         this.idCupo = idCupo;
         return this;
     }
 
-    public CuposBuildTest cilindraje(int cilindraje) {
+    public CuposBuild cilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
         return this;
     }
 
-    public CuposBuildTest placa(String placa) {
+    public CuposBuild placa(String placa) {
         this.placa = placa;
         return this;
     }
 
-    public CuposBuildTest horaEntrada(Date horaEntrada) {
+    public CuposBuild horaEntrada(Date horaEntrada) {
         this.horaEntrada = horaEntrada;
         return this;
     }
 
-    public CuposBuildTest horaSalida(Date horaSalida) {
+    public CuposBuild horaSalida(Date horaSalida) {
         this.horaSalida = horaSalida;
         return this;
     }
 
-    public CuposBuildTest tipoVehiculo(String tipoVehiculo) {
+    public CuposBuild tipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
         return this;
     }
