@@ -5,7 +5,7 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
  */
 public class Constantes {
 
-    private Constantes() {
+    public Constantes() {
     }
 
     public static final String REQUIRED_PLACA = "La placa es requerida";
