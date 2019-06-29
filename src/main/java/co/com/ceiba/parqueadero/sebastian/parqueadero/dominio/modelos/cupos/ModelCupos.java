@@ -3,10 +3,16 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos;
 import java.util.Date;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Cupos
  */
+
+ @Getter
+ @Setter
+
 public class ModelCupos {
 
     private long idCupo;
