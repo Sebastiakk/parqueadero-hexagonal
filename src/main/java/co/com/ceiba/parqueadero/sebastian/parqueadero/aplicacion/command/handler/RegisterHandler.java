@@ -2,13 +2,13 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.handle
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.RegisterCommand;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
 public class RegisterHandler {
 
-    private final ServicioCupos servicioCupos;
+    private final ServicioGuardarVehiculo servicioCupos;
 
-    public RegisterHandler(ServicioCupos servicioCupos) {
+    public RegisterHandler(ServicioGuardarVehiculo servicioCupos) {
         this.servicioCupos = servicioCupos;
     }
 

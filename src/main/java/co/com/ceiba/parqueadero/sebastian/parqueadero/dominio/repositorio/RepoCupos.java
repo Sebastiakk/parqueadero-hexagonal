@@ -17,5 +17,5 @@ public interface RepoCupos {
 
     int countTipoVehiculo(String tipo);
 
-    boolean existe(ModelCupos cupo);
+    boolean existe(String placa);
 }
