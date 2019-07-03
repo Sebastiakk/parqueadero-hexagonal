@@ -16,7 +16,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.Servicio
  */
 
 @Configuration
-public class ConfiguracionBean {
+public class configuracionBean {
 
     @Bean
     public RegistrarHandler crearHandler(ServicioGuardarVehiculo data) {
