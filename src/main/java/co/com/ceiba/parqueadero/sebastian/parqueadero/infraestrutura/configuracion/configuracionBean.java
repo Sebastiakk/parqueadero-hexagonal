@@ -12,7 +12,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.Servicio
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioListarCupos;
 
 /**
- * configuracionBean
+ * ConfiguracionBean
  */
 
 @Configuration
