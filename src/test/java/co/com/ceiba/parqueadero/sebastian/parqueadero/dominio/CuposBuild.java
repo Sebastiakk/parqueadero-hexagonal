@@ -20,9 +20,9 @@ public class CuposBuild {
         this.idCupo = 1;
         this.placa = "SEB-123";
         this.horaEntrada = new Date();
-        this.horaSalida = new Date();
+        this.horaSalida = null;
         this.tipoVehiculo = "Carro";
-        this.cilindraje = 150;
+        this.cilindraje = 0;
     }
 
     public CuposBuild idCupo(long idCupo) {
