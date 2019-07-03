@@ -31,7 +31,7 @@ public class EntityCupos {
     private String placa;
     @Column(name = "hora_entrada", nullable = false)
     private Date horaEntrada;
-    @Column(name = "hora_salida", nullable = false)
+    @Column(name = "hora_salida")
     private Date horaSalida;
     @Column(name = "tipo_vehiculo", nullable = false)
     private String tipoVehiculo;

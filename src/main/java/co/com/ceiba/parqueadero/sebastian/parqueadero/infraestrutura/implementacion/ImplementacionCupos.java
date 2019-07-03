@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.mapper.MapperCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.EntityCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.repositorio.RepoCupos;
 
 /**
@@ -18,10 +19,6 @@ public class ImplementacionCupos implements PuertoRepositorioCupo {
     private RepoCupos query;
     private MapperCupos mapper;
 
-    public ImplementacionCupos() {
-
-    }
-
     public ImplementacionCupos(RepoCupos query, MapperCupos mapper) {
         this.query = query;
         this.mapper = mapper;
@@ -29,27 +26,28 @@ public class ImplementacionCupos implements PuertoRepositorioCupo {
 
     @Override
     public List<ModelCupos> list() {
-        return null;
+        return mapper.listConvertToDomain(query.findAll());
     }
 
     @Override
     public int countTipoVehiculo(String tipo) {
-        return 0;
+        return query.contarTipoVehiculo(tipo);
     }
 
     @Override
     public boolean existe(String placa) {
-        return false;
+        return query.existe(placa);
     }
 
     @Override
     public ModelCupos create(ModelCupos cupo) {
-        return null;
+        EntityCupos data = mapper.convertirEntity(cupo);
+        return mapper.convertirModel(query.save(data));
     }
 
     @Override
     public ModelCupos buscarPlaca(String placa) {
-        return null;
+        return mapper.convertirModel(query.buscarPorPlaca(placa));
     }
 
 }

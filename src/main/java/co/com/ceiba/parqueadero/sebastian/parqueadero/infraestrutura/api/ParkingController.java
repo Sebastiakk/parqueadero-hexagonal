@@ -48,8 +48,8 @@ public class ParkingController {
     }
 
     @PostMapping
-    public void guardarVehiculo(@RequestBody RegisterCommand body) {
-        this.registerHandler.create(body);
+    public ModelCupos guardarVehiculo(@RequestBody RegisterCommand body) {
+        return this.registerHandler.create(body);
     }
 
     // @PutMapping("/{licensePlate}")

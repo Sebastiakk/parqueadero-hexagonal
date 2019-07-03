@@ -24,7 +24,7 @@ public class ServicioGuardarVehiculo {
     public ModelCupos create(ModelCupos data) {
         this.existe(data.getPlaca());
         this.catidadTipoVehiculo(data.getTipoVehiculo());
-        // this.validarPrimeraLetraPlaca(data.getPlaca(), data.getHoraEntrada());
+        this.validarPrimeraLetraPlaca(data.getPlaca(), data.getHoraEntrada());
         return this.repo.create(data);
     }
 
