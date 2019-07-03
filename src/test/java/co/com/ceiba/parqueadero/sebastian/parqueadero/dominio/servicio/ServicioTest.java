@@ -7,9 +7,10 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.CuposBuild;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoExiste;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
-// import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioActualizarCupo;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioActualizarCupo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
 import static org.junit.Assert.assertEquals;
@@ -25,15 +26,15 @@ public class ServicioTest {
 
     private PuertoRepositorioCupo puertoRepositorioCupo;
     private ServicioGuardarVehiculo servicioGuardar;
-    // private ServicioActualizarCupo servicioActualizar;
+    private ServicioActualizarCupo servicioActualizar;
     private CuposBuild build;
 
     @Before
-    public void StartMocks() {
+    public void inicio() {
         puertoRepositorioCupo = mock(PuertoRepositorioCupo.class);
         this.build = new CuposBuild();
         this.servicioGuardar = new ServicioGuardarVehiculo(puertoRepositorioCupo);
-
+        this.servicioActualizar = new ServicioActualizarCupo(puertoRepositorioCupo);
     }
 
     @Test
@@ -110,6 +111,21 @@ public class ServicioTest {
         } catch (ExceptionNoAutorizado err) {
             // Assert
             assertEquals(Constantes.MENSAJE_NO_AUTORIZADO, err.getMessage());
+        }
+    }
+
+    @Test
+    public void actualizarCupoSiExisteElVehiculo() {
+        // Arrange
+        ModelCupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        // Act
+        try {
+            servicioActualizar.actualizar(modelCupos.getPlaca());
+            fail();
+        } catch (ExceptionNoExiste e) {
+            // Assert
+            assertEquals(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE, e.getMessage());
         }
     }
 

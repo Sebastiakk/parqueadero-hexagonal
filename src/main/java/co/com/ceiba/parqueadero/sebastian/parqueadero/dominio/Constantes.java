@@ -4,8 +4,9 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
  * Constantes
  */
 public final class Constantes {
-
-    // No se puede instanciar porque lo unico que se necesita son las constantes
+    /**
+     * No se puede instanciar porque lo unico que se necesita son las constantes
+     */
     private Constantes() {
         throw new IllegalStateException("No se puede instanciar");
     }
@@ -24,10 +25,8 @@ public final class Constantes {
     public static final String MENSAJE_TIPOS_VEHICULO = "El tipo de vehiculo es Moto o Carro";
     public static final String MENSAJE_CAPACIDAD_MAXIMA = "El parqueadero alcanzo la capacidad maxima para este tipo de vehiculo";
     public static final String MENSAJE_EXISTENTE = "EL vehiculo se encuentra en el parqueadero";
-    public static final String MENSAJE_NO_EXISTENTE = "El vehiculo no existe";
+    public static final String MENSAJE_VEHICULO_NO_EXISTENTE = "El vehiculo no existe";
     public static final String MENSAJE_NO_AUTORIZADO = "Este vehiculo no esta autorizado para ingresar hoy";
-    // public static final String MENSAJE_NO_AUTORIZADO = "Este vehiculo no esta
-    // autorizado para ingresar hoy";
 
     public static final int CERO = 0;
     public static final int MAX_CARRO = 20;
