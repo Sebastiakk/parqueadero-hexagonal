@@ -29,7 +29,7 @@ public class ApiParqueadero {
     }
 
     @GetMapping()
-    public List<ModelCupos> List() {
+    public List<ModelCupos> list() {
         return this.listarHandler.listarCupos();
     }
 
