@@ -18,6 +18,7 @@ public final class Constantes {
     public static final String TIPOS_VEHICULO = "El tipo de vehiculo es Moto o Carro";
     public static final String TEXT_VACIO = "";
     public static final String PRIMERA_LETRA_PLACA = "A";
+    public static final String PLACA_CON_A = "ASEB-123";
     public static final String CAPACIDAD_MAXIMA = "El parqueadero alcanzo la capacidad maxima para este tipo de vehiculo";
     public static final String EXISTENTE = "EL vehiculo se encuentra en el parqueadero";
     public static final String NO_EXISTENTE = "El vehiculo no existe";

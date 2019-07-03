@@ -6,6 +6,7 @@ import org.junit.Test;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.CuposBuild;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
@@ -13,6 +14,9 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.Servicio
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * ServicioTest
@@ -87,5 +91,37 @@ public class ServicioTest {
         }
     }
 
+    @Test
+    public void validarLetraPlaca() {
+        // Arrange
+
+        Calendar horaEntrada = Calendar.getInstance();
+        horaEntrada.set(Calendar.DAY_OF_WEEK, Calendar.TUESDAY);
+        this.build.placa(Constantes.PLACA_CON_A);
+        this.build.horaEntrada(horaEntrada.getTime());
+
+        ModelCupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        // Act
+        try {
+            registerEntryService.create(modelCupos);
+            fail();
+        } catch (ExceptionNoAutorizado err) {
+            // Assert
+            assertEquals(Constantes.NO_AUTORIZADO, err.getMessage());
+        }
+    }
+
+    @Test
+    public void salidaDelVehiculo() {
+        // Arrange
+        this.build.horaSalida(new Date());
+        ModelCupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        // Act
+        ModelCupos copia = registerEntryService.create(modelCupos);
+        // Assert
+        assertEquals(copia.getHoraSalida(), modelCupos.getHoraSalida());
+    }
 
 }
