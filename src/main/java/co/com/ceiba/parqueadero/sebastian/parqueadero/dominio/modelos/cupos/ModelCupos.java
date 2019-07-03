@@ -28,7 +28,7 @@ public class ModelCupos {
 
     public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo, int cilindraje,
             int valor) {
-        this.validarArgumentos(placa, horaEntrada, tipoVehiculo, cilindraje);
+        this.validarArgumentos(placa, tipoVehiculo, cilindraje);
         this.idCupo = idCupo;
         this.placa = placa;
         this.horaEntrada = horaEntrada;
@@ -38,7 +38,7 @@ public class ModelCupos {
         this.valor = valor;
     }
 
-    private void validarArgumentos(String placa, Date horaEntrada, String tipoVehiculo, int cilindraje) {
+    private void validarArgumentos(String placa, String tipoVehiculo, int cilindraje) {
         // Valida que la plata este en la data
         ValidarArgumentos.exeptionRequired(placa, Constantes.REQUIRED_PLACA);
         // Valida que el tipo de vehiculo este en la data
