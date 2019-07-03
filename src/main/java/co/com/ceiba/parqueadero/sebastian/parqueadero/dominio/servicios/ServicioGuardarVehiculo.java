@@ -30,16 +30,16 @@ public class ServicioGuardarVehiculo {
 
     private void existe(String placa) {
         if (this.repo.existe(placa)) {
-            throw new ExceptionExiste(Constantes.EXISTENTE);
+            throw new ExceptionExiste(Constantes.MENSAJE_EXISTENTE);
         }
     }
 
     private void catidadTipoVehiculo(String tipoVehiculo) {
         int cantidad = this.repo.countTipoVehiculo(tipoVehiculo);
         if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_MOTO) && cantidad >= Constantes.MAX_MOTO) {
-            throw new ExeptionCapacidadMaxima(Constantes.CAPACIDAD_MAXIMA);
+            throw new ExeptionCapacidadMaxima(Constantes.MENSAJE_CAPACIDAD_MAXIMA);
         } else if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_CARRO) && cantidad >= Constantes.MAX_CARRO) {
-            throw new ExeptionCapacidadMaxima(Constantes.CAPACIDAD_MAXIMA);
+            throw new ExeptionCapacidadMaxima(Constantes.MENSAJE_CAPACIDAD_MAXIMA);
         }
     }
 
@@ -48,7 +48,7 @@ public class ServicioGuardarVehiculo {
         hoy.setTimeInMillis(date.getTime());
         int dia = hoy.get(Calendar.DAY_OF_WEEK);
         if (placa.startsWith(Constantes.PRIMERA_LETRA_PLACA) && (dia > Calendar.MONDAY)) {
-            throw new ExceptionNoAutorizado(Constantes.NO_AUTORIZADO);
+            throw new ExceptionNoAutorizado(Constantes.MENSAJE_NO_AUTORIZADO);
         }
     }
 

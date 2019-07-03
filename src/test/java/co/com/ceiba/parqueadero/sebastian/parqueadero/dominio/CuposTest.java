@@ -24,13 +24,13 @@ public class CuposTest {
     @Test
     public void validarPlaca() {
         this.cupoBuild.placa(null);
-        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionRequired.class, Constantes.REQUIRED_PLACA);
+        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionRequired.class, Constantes.MENSAJE_REQUIRED_PLACA);
     }
 
     @Test
     public void validarVehiculo() {
         this.cupoBuild.tipoVehiculo(null);
-        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionRequired.class, Constantes.REQUIRED_TIPO_VEHICULO);
+        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionRequired.class, Constantes.MENSAJE_REQUIRED_TIPO_VEHICULO);
     }
 
     @Test
@@ -38,12 +38,12 @@ public class CuposTest {
         this.cupoBuild.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO);
         this.cupoBuild.cilindraje(Constantes.CERO);
         TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionDiferenteCero.class,
-                Constantes.REQUIRED_CILINDRAJE);
+                Constantes.MENSAJE_REQUIRED_CILINDRAJE);
     }
 
     @Test
     public void validarTiposVehiculo() {
         this.cupoBuild.tipoVehiculo("moto");
-        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionTipoVehiculo.class, Constantes.TIPOS_VEHICULO);
+        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionTipoVehiculo.class, Constantes.MENSAJE_TIPOS_VEHICULO);
     }
 }

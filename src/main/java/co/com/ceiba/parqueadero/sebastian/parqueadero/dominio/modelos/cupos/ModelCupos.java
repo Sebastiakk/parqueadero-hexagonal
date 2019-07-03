@@ -40,15 +40,15 @@ public class ModelCupos {
 
     private void validarArgumentos(String placa, String tipoVehiculo, int cilindraje) {
         // Valida que la plata este en la data
-        ValidarArgumentos.exeptionRequired(placa, Constantes.REQUIRED_PLACA);
+        ValidarArgumentos.exeptionRequired(placa, Constantes.MENSAJE_REQUIRED_PLACA);
         // Valida que el tipo de vehiculo este en la data
-        ValidarArgumentos.exeptionRequired(tipoVehiculo, Constantes.REQUIRED_TIPO_VEHICULO);
+        ValidarArgumentos.exeptionRequired(tipoVehiculo, Constantes.MENSAJE_REQUIRED_TIPO_VEHICULO);
         // Valida que el tipo de vehiculo sea correcto "Moto" o "Carro"
-        ValidarArgumentos.exeptionTipoVehiculo(tipoVehiculo, Constantes.TIPOS_VEHICULO);
+        ValidarArgumentos.exeptionTipoVehiculo(tipoVehiculo, Constantes.MENSAJE_TIPOS_VEHICULO);
 
         // Si el tipo de vehiculo es moto valida que el cilindraje sea diferente de cero
         if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_MOTO)) {
-            ValidarArgumentos.exeptionDiferenteCero(cilindraje, Constantes.REQUIRED_CILINDRAJE);
+            ValidarArgumentos.exeptionDiferenteCero(cilindraje, Constantes.MENSAJE_REQUIRED_CILINDRAJE);
         }
 
     }

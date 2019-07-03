@@ -13,7 +13,7 @@ public final class ValidarArgumentos {
     }
 
     public static void exeptionPlaca(Object value, String mensaje) {
-        if (value == null) {
+        if (value == null || value.equals(Constantes.TEXT_VACIO)) {
             throw new ExeptionPlaca(mensaje);
         }
     }

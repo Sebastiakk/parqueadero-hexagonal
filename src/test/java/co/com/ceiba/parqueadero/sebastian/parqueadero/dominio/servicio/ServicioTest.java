@@ -9,6 +9,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Mode
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
+// import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioActualizarCupo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
 import static org.junit.Assert.assertEquals;
@@ -16,7 +17,6 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * ServicioTest
@@ -24,14 +24,15 @@ import java.util.Date;
 public class ServicioTest {
 
     private PuertoRepositorioCupo puertoRepositorioCupo;
-    private ServicioGuardarVehiculo registerEntryService;
+    private ServicioGuardarVehiculo servicioGuardar;
+    // private ServicioActualizarCupo servicioActualizar;
     private CuposBuild build;
 
     @Before
     public void StartMocks() {
         puertoRepositorioCupo = mock(PuertoRepositorioCupo.class);
         this.build = new CuposBuild();
-        this.registerEntryService = new ServicioGuardarVehiculo(puertoRepositorioCupo);
+        this.servicioGuardar = new ServicioGuardarVehiculo(puertoRepositorioCupo);
 
     }
 
@@ -41,7 +42,7 @@ public class ServicioTest {
         ModelCupos modelCupos = this.build.build();
         when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
         // Act
-        ModelCupos copia = registerEntryService.create(modelCupos);
+        ModelCupos copia = servicioGuardar.create(modelCupos);
         // Assert
         assertEquals(copia.getIdCupo(), modelCupos.getIdCupo());
     }
@@ -54,7 +55,7 @@ public class ServicioTest {
         ModelCupos modelCupos = this.build.build();
         when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
         // Act
-        ModelCupos copia = registerEntryService.create(modelCupos);
+        ModelCupos copia = servicioGuardar.create(modelCupos);
         // Assert
         assertEquals(copia.getIdCupo(), modelCupos.getIdCupo());
     }
@@ -66,11 +67,11 @@ public class ServicioTest {
         when(puertoRepositorioCupo.countTipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)).thenReturn(Constantes.MAX_CARRO);
         // Act
         try {
-            registerEntryService.create(modelCupos);
+            servicioGuardar.create(modelCupos);
             fail();
         } catch (ExeptionCapacidadMaxima err) {
             // Assert
-            assertEquals(Constantes.CAPACIDAD_MAXIMA, err.getMessage());
+            assertEquals(Constantes.MENSAJE_CAPACIDAD_MAXIMA, err.getMessage());
         }
     }
 
@@ -83,11 +84,11 @@ public class ServicioTest {
         when(puertoRepositorioCupo.countTipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)).thenReturn(Constantes.MAX_MOTO);
         // Act
         try {
-            registerEntryService.create(modelCupos);
+            servicioGuardar.create(modelCupos);
             fail();
         } catch (ExeptionCapacidadMaxima err) {
             // Assert
-            assertEquals(Constantes.CAPACIDAD_MAXIMA, err.getMessage());
+            assertEquals(Constantes.MENSAJE_CAPACIDAD_MAXIMA, err.getMessage());
         }
     }
 
@@ -104,24 +105,12 @@ public class ServicioTest {
         when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
         // Act
         try {
-            registerEntryService.create(modelCupos);
+            servicioGuardar.create(modelCupos);
             fail();
         } catch (ExceptionNoAutorizado err) {
             // Assert
-            assertEquals(Constantes.NO_AUTORIZADO, err.getMessage());
+            assertEquals(Constantes.MENSAJE_NO_AUTORIZADO, err.getMessage());
         }
-    }
-
-    @Test
-    public void salidaDelVehiculo() {
-        // Arrange
-        this.build.horaSalida(new Date());
-        ModelCupos modelCupos = this.build.build();
-        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
-        // Act
-        ModelCupos copia = registerEntryService.create(modelCupos);
-        // Assert
-        assertEquals(copia.getHoraSalida(), modelCupos.getHoraSalida());
     }
 
 }
