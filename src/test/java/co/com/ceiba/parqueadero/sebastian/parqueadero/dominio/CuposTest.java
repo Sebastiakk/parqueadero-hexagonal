@@ -35,9 +35,10 @@ public class CuposTest {
 
     @Test
     public void validarCilindraje() {
-        this.cupoBuild.tipoVehiculo("Moto");
+        this.cupoBuild.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO);
         this.cupoBuild.cilindraje(Constantes.CERO);
-        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionDiferenteCero.class, Constantes.REQUIRED_CILINDRAJE);
+        TestBase.assertThrows(() -> this.cupoBuild.build(), ExeptionDiferenteCero.class,
+                Constantes.REQUIRED_CILINDRAJE);
     }
 
     @Test

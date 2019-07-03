@@ -18,13 +18,13 @@ public class ServicioActualizarCupo {
         this.repo = repoCupos;
     }
 
-    public void actualizar(String placa) {
+    public ModelCupos actualizar(String placa) {
         this.existe(placa);
         ModelCupos modelCupo = repo.buscarPlaca(placa);
         modelCupo.setHoraSalida(new Date());
         // NOTE tengo que cambiar el 999 por la funcion que es
         modelCupo.setValor(999);
-        repo.create(modelCupo);
+        return repo.create(modelCupo);
     }
 
     private void existe(String placa) {
