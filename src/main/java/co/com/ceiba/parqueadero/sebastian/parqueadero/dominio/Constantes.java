@@ -23,5 +23,6 @@ public final class Constantes {
     public static final String PRIMERA_LETRA_PLACA = "A";
     public static final String CAPACIDAD_MAXIMA = "El parqueadero alcanzo la capacidad maxima para este tipo de vehiculo";
     public static final String EXISTENTE = "EL vehiculo se encuentra en el parqueadero";
+    public static final String NO_EXISTENTE = "El vehiculo no existe";
     public static final String NO_AUTORIZADO = "Este vehiculo no esta autorizado para ingresar hoy";
 }

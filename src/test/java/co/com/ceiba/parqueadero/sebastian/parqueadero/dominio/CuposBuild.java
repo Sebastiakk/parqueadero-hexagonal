@@ -14,6 +14,7 @@ public class CuposBuild {
     private Date horaSalida;
     private String tipoVehiculo;
     private int cilindraje;
+    private int valor;
 
     public CuposBuild() {
         this.idCupo = 1;
@@ -55,7 +56,7 @@ public class CuposBuild {
     }
 
     public ModelCupos build() {
-        return new ModelCupos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje);
+        return new ModelCupos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje, valor);
     }
 
 }

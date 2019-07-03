@@ -27,13 +27,17 @@ public class EntityCupos {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_cupo")
     private long idCupo;
-    @Column
+    @Column(nullable = false)
     private String placa;
-    @Column(name = "hora_entrada")
+    @Column(name = "hora_entrada", nullable = false)
     private Date horaEntrada;
-    @Column(name = "hora_salida")
+    @Column(name = "hora_salida", nullable = false)
     private Date horaSalida;
-    @Column(name = "tipo_vehiculo")
+    @Column(name = "tipo_vehiculo", nullable = false)
     private String tipoVehiculo;
+    @Column(name = "cilindraje")
+    private int cilindraje;
+    @Column(name = "valor")
+    private int valor;
 
 }

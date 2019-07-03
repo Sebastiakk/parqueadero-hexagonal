@@ -7,15 +7,15 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Mode
 /**
  * RepoCupos
  */
-public interface RepoCupos {
+public interface PuertoRepositorioCupo {
 
-    void create(ModelCupos cupo);
-
-    void update(ModelCupos cupo);
+    ModelCupos create(ModelCupos cupo);
 
     List<ModelCupos> list();
 
     int countTipoVehiculo(String tipo);
+
+    ModelCupos buscarPlaca(String placa);
 
     boolean existe(String placa);
 }

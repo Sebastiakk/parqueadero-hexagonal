@@ -4,19 +4,19 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.Registe
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
-public class RegisterHandler {
+public class RegistrarHandler {
 
     private final ServicioGuardarVehiculo servicioCupos;
 
-    public RegisterHandler(ServicioGuardarVehiculo servicioCupos) {
+    public RegistrarHandler(ServicioGuardarVehiculo servicioCupos) {
         this.servicioCupos = servicioCupos;
     }
 
-    public void create(RegisterCommand register) {
+    public ModelCupos create(RegisterCommand register) {
         ModelCupos cupo = new ModelCupos(register.getIdCupo(), register.getPlaca(), register.getHoraEntrada(),
-                register.getHoraSalida(), register.getTipoVehiculo(), register.getCilindraje());
+                register.getHoraSalida(), register.getTipoVehiculo(), register.getCilindraje(), register.getValor());
 
-        this.servicioCupos.create(cupo);
+        return this.servicioCupos.create(cupo);
     }
 
 }

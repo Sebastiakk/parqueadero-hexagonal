@@ -10,8 +10,8 @@ import lombok.Setter;
  * Cupos
  */
 
- @Getter
- @Setter
+@Getter
+@Setter
 
 public class ModelCupos {
 
@@ -21,23 +21,24 @@ public class ModelCupos {
     private Date horaSalida;
     private String tipoVehiculo;
     private int cilindraje;
+    private int valor;
 
     public ModelCupos() {
     }
 
-    public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
-            int cilindraje) {
-
-        this.validarArgumentos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje);
+    public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo, int cilindraje,
+            int valor) {
+        this.validarArgumentos(idCupo, placa, horaEntrada, tipoVehiculo, cilindraje);
         this.idCupo = idCupo;
         this.placa = placa;
         this.horaEntrada = horaEntrada;
         this.horaSalida = horaSalida;
         this.tipoVehiculo = tipoVehiculo;
+        this.cilindraje = cilindraje;
+        this.valor = valor;
     }
 
-    private void validarArgumentos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo,
-            int cilindraje) {
+    private void validarArgumentos(long idCupo, String placa, Date horaEntrada, String tipoVehiculo, int cilindraje) {
         // Valida que la plata este en la data
         ValidarArgumentos.exeptionRequired(placa, Constantes.REQUIRED_PLACA);
         // Valida que el tipo de vehiculo este en la data

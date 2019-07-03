@@ -16,4 +16,5 @@ public class RegisterCommand {
         private Date horaSalida;
         private String tipoVehiculo;
         private int cilindraje;
+        private int valor;
 }

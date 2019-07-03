@@ -2,41 +2,40 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios;
 
 import java.util.Calendar;
 import java.util.Date;
-import java.util.List;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionExiste;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.RepoCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
 
 /**
  * ServicioCupos
  */
 public class ServicioGuardarVehiculo {
 
-    private RepoCupos repoCupos;
+    private PuertoRepositorioCupo repo;
 
-    public ServicioGuardarVehiculo(RepoCupos repoCupos) {
-        this.repoCupos = repoCupos;
+    public ServicioGuardarVehiculo(PuertoRepositorioCupo repoCupos) {
+        this.repo = repoCupos;
     }
 
-    public void create(ModelCupos data) {
+    public ModelCupos create(ModelCupos data) {
         this.existe(data.getPlaca());
         this.catidadTipoVehiculo(data.getTipoVehiculo());
-        this.validarPrimeraLetraPlaca(data.getPlaca(), data.getHoraEntrada());
-        this.repoCupos.create(data);
+        // this.validarPrimeraLetraPlaca(data.getPlaca(), data.getHoraEntrada());
+        return this.repo.create(data);
     }
 
     private void existe(String placa) {
-        if (this.repoCupos.existe(placa)) {
+        if (this.repo.existe(placa)) {
             throw new ExceptionExiste(Constantes.EXISTENTE);
         }
     }
 
     private void catidadTipoVehiculo(String tipoVehiculo) {
-        int cantidad = this.repoCupos.countTipoVehiculo(tipoVehiculo);
+        int cantidad = this.repo.countTipoVehiculo(tipoVehiculo);
         if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_MOTO) && cantidad >= Constantes.MAX_MOTO) {
             throw new ExeptionCapacidadMaxima(Constantes.CAPACIDAD_MAXIMA);
         } else if (tipoVehiculo.equals(Constantes.TIPO_VEHICULO_CARRO) && cantidad >= Constantes.MAX_CARRO) {
