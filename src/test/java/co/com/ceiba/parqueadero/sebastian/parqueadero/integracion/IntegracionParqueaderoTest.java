@@ -22,7 +22,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
-public class ParkingControllerTest {
+public class IntegracionParqueaderoTest {
     @Autowired
     private ApiParqueadero parkingController;
     private MockMvc mockMvc;
