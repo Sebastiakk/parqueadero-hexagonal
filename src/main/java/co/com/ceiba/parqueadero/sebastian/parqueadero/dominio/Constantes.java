@@ -11,6 +11,7 @@ public final class Constantes {
         throw new IllegalStateException("No se puede instanciar");
     }
 
+    public static final String PATH = "/parqueadero";
     public static final String TIPO_VEHICULO_MOTO = "Moto";
     public static final String TIPO_VEHICULO_CARRO = "Carro";
     public static final String TIPO_VEHICULO_OTRO = "Bicicleta";

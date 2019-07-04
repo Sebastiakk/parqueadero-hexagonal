@@ -19,7 +19,6 @@ import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
 import java.util.Calendar;
-import java.util.Date;
 
 /**
  * ServicioTest

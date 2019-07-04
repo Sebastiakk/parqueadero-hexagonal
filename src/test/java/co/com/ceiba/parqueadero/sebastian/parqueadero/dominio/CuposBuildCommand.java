@@ -2,12 +2,12 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
 
 import java.util.Date;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.RegisterCommand;
 
 /**
  * CuposBuildTest
  */
-public class CuposBuild {
+public class CuposBuildCommand {
     private long idCupo;
     private String placa;
     private Date horaEntrada;
@@ -16,7 +16,7 @@ public class CuposBuild {
     private int cilindraje;
     private int valor;
 
-    public CuposBuild() {
+    public CuposBuildCommand() {
         this.idCupo = 1;
         this.placa = Constantes.PLACA;
         this.horaEntrada = new Date();
@@ -25,38 +25,38 @@ public class CuposBuild {
         this.cilindraje = 0;
     }
 
-    public CuposBuild idCupo(long idCupo) {
+    public CuposBuildCommand idCupo(long idCupo) {
         this.idCupo = idCupo;
         return this;
     }
 
-    public CuposBuild cilindraje(int cilindraje) {
+    public CuposBuildCommand cilindraje(int cilindraje) {
         this.cilindraje = cilindraje;
         return this;
     }
 
-    public CuposBuild placa(String placa) {
+    public CuposBuildCommand placa(String placa) {
         this.placa = placa;
         return this;
     }
 
-    public CuposBuild horaEntrada(Date horaEntrada) {
+    public CuposBuildCommand horaEntrada(Date horaEntrada) {
         this.horaEntrada = horaEntrada;
         return this;
     }
 
-    public CuposBuild horaSalida(Date horaSalida) {
+    public CuposBuildCommand horaSalida(Date horaSalida) {
         this.horaSalida = horaSalida;
         return this;
     }
 
-    public CuposBuild tipoVehiculo(String tipoVehiculo) {
+    public CuposBuildCommand tipoVehiculo(String tipoVehiculo) {
         this.tipoVehiculo = tipoVehiculo;
         return this;
     }
 
-    public ModelCupos build() {
-        return new ModelCupos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje, valor);
+    public RegisterCommand build() {
+        return new RegisterCommand(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje, valor);
     }
 
 }
