@@ -149,20 +149,7 @@ public class ServicioTest {
         }
     }
 
-    @Test
-    public void vehicleInParking() {
-        // arrange
-        ModelCupos modelCupos = this.build.build();
-        when(this.puertoRepositorioCupo.existe(modelCupos.getPlaca())).thenReturn(true);
-        this.servicioActualizar = new ServicioActualizarCupo(this.puertoRepositorioCupo);
-        try {
-            // act
-            this.servicioActualizar.actualizar(modelCupos.getPlaca());
-        } catch (ExceptionNoExiste e) {
-            assertEquals(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE, e.getMessage());
-        }
-    }
-
+    
     // @Test
     // public void validarPecio() {
     // // Arrange
