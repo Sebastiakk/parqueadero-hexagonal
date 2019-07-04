@@ -14,10 +14,12 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.Servicio
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.fail;
 import static org.mockito.Mockito.*;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * ServicioTest
@@ -35,6 +37,15 @@ public class ServicioTest {
         this.build = new CuposBuild();
         this.servicioGuardar = new ServicioGuardarVehiculo(puertoRepositorioCupo);
         this.servicioActualizar = new ServicioActualizarCupo(puertoRepositorioCupo);
+    }
+
+    @Test
+    public void preparacionCrear() {
+        // act
+        this.servicioGuardar = new ServicioGuardarVehiculo(puertoRepositorioCupo);
+        // assert
+        assertNotNull(this.puertoRepositorioCupo);
+        assertNotNull(this.servicioGuardar);
     }
 
     @Test
@@ -115,6 +126,15 @@ public class ServicioTest {
     }
 
     @Test
+    public void preparacionActualizar() {
+        // act
+        this.servicioActualizar = new ServicioActualizarCupo(puertoRepositorioCupo);
+        // assert
+        assertNotNull(this.puertoRepositorioCupo);
+        assertNotNull(this.servicioActualizar);
+    }
+
+    @Test
     public void actualizarCupoSiExisteElVehiculo() {
         // Arrange
         ModelCupos modelCupos = this.build.build();
@@ -128,5 +148,41 @@ public class ServicioTest {
             assertEquals(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE, e.getMessage());
         }
     }
+
+    @Test
+    public void vehicleInParking() {
+        // arrange
+        ModelCupos modelCupos = this.build.build();
+        when(this.puertoRepositorioCupo.existe(modelCupos.getPlaca())).thenReturn(true);
+        this.servicioActualizar = new ServicioActualizarCupo(this.puertoRepositorioCupo);
+        try {
+            // act
+            this.servicioActualizar.actualizar(modelCupos.getPlaca());
+        } catch (ExceptionNoExiste e) {
+            assertEquals(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE, e.getMessage());
+        }
+    }
+
+    // @Test
+    // public void validarPecio() {
+    // // Arrange
+    // int valueForHour = 1000;
+    // int hour = 6;
+    // Calendar cal = Calendar.getInstance();
+    // cal.setTime(new Date());
+
+    // cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
+
+    // ModelCupos modelCupos = this.build.build();
+    // this.build.horaSalida(cal.getTime());
+    // ServicioGuardarVehiculo guardar = new
+    // ServicioGuardarVehiculo(puertoRepositorioCupo);
+    // ServicioActualizarCupo actualizar = new
+    // ServicioActualizarCupo(puertoRepositorioCupo);
+    // when(puertoRepositorioCupo.buscarPlaca(modelCupos.getPlaca())).thenReturn(modelCupos);
+    // // Act
+    // actualizar.actualizar(modelCupos.getPlaca());
+    // assertEquals((valueForHour * hour), modelCupos.getValor(), 0);
+    // }
 
 }

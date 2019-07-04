@@ -17,6 +17,7 @@ public final class Constantes {
     public static final String TEXT_VACIO = "";
     public static final String PRIMERA_LETRA_PLACA = "A";
     public static final String PLACA_CON_A = "ASEB-123";
+    public static final String PLACA = "SEB-123";
 
     public static final String MENSAJE_REQUIRED_PLACA = "La placa es requerida";
     public static final String MENSAJE_REQUIRED_TIPO_VEHICULO = "El tipo de vehiculo es requirido";
