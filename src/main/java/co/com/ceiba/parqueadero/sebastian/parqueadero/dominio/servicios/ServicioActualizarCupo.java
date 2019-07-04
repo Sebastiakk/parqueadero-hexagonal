@@ -28,7 +28,7 @@ public class ServicioActualizarCupo {
     }
 
     private void existe(String placa) {
-        if (this.repo.existe(placa) == false) {
+        if (!this.repo.existe(placa)) {
             throw new ExceptionNoExiste(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE);
         }
     }
