@@ -32,4 +32,10 @@ public final class Constantes {
     public static final int MAX_CARRO = 20;
     public static final int MAX_MOTO = 10;
     public static final int CILINDRAJE = 160;
+
+    public static final float PRECIO_HORA_CARRO = 1000;
+    public static final float PRECIO_DIA_CARRO = 8000;
+    public static final float PRECIO_HORA_HORA = 500;
+    public static final float PRECIO_DIA_MOTO = 4000;
+    public static final float PRECIO_CILINDRAJE = 2000;
 }
