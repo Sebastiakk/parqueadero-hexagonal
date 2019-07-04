@@ -55,8 +55,6 @@ public class ParkingControllerTest {
 
     @Test
     public void salidaDelVehiculo() throws Exception {
-        // Arrange
-        this.crear();
         // Act y Assert
         mockMvc.perform(put(Constantes.PATH + "/" + Constantes.PLACA).contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
