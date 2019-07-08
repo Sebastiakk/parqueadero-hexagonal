@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "/parqueadero", produces = "application/json")
-@CrossOrigin("*")
 public class ApiParqueadero {
 
     private RegistrarHandler registerHandler;
