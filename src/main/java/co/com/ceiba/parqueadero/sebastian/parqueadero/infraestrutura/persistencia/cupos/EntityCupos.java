@@ -1,4 +1,4 @@
-package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia;
+package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.cupos;
 
 import java.util.Date;
 

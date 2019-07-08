@@ -1,18 +1,17 @@
-package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.repositorio;
+package co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.cupos;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.EntityCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.cupos.EntityCupos;
 
 /**
  * RepoCupos
  * 
  * Este es el repositorio en donde se encuentran todas las consultas
- * NOTE tiene que estar en la carpeta de persistencia
  */
-public interface RepoCupos extends CrudRepository<EntityCupos, Long> {
+public interface RepoCuposH2 extends CrudRepository<EntityCupos, Long> {
 
     @Query("SELECT COUNT(idCupo) FROM EntityCupos WHERE tipoVehiculo = :tipoVehiculo AND horaSalida IS NULL")
     int contarTipoVehiculo(@Param("tipoVehiculo") String tipoVehiculo);

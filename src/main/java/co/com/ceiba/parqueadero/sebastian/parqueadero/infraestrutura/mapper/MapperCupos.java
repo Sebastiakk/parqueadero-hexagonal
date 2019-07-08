@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.EntityCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.cupos.EntityCupos;
 
 /**
  * MapperCupos
