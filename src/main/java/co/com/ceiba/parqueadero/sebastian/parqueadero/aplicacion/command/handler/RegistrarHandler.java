@@ -3,7 +3,7 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.handle
 import java.util.Date;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.RegisterCommand;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioGuardarVehiculo;
 
 public class RegistrarHandler {
@@ -14,11 +14,11 @@ public class RegistrarHandler {
         this.servicioCupos = servicioCupos;
     }
 
-    public ModelCupos create(RegisterCommand register) {
-        ModelCupos cupo = new ModelCupos(register.getIdCupo(), register.getPlaca(), new Date(),
+    public Cupos crear(RegisterCommand register) {
+        Cupos cupo = new Cupos(register.getIdCupo(), register.getPlaca(), new Date(),
                 register.getHoraSalida(), register.getTipoVehiculo(), register.getCilindraje(), register.getValor());
 
-        return this.servicioCupos.create(cupo);
+        return this.servicioCupos.crear(cupo);
     }
 
 }

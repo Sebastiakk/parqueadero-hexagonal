@@ -4,7 +4,7 @@ import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoExiste;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
 
@@ -19,12 +19,12 @@ public class ServicioActualizarCupo {
         this.repo = repoCupos;
     }
 
-    public ModelCupos actualizar(String placa) {
+    public Cupos actualizar(String placa) {
         this.existe(placa);
-        ModelCupos modelCupo = repo.buscarPlaca(placa);
+        Cupos modelCupo = repo.buscarPlaca(placa);
         modelCupo.setHoraSalida(new Date());
         modelCupo.setValor(this.calcularPrecio(modelCupo));
-        return repo.create(modelCupo);
+        return repo.crear(modelCupo);
     }
 
     private void existe(String placa) {
@@ -33,7 +33,7 @@ public class ServicioActualizarCupo {
         }
     }
 
-    private int calcularPrecio(ModelCupos cupo) {
+    private int calcularPrecio(Cupos cupo) {
         float precio = 0;
         long tiempoParqueado = cupo.getHoraSalida().getTime() - cupo.getHoraEntrada().getTime();
         long minutos = TimeUnit.MILLISECONDS.toMinutes(tiempoParqueado);

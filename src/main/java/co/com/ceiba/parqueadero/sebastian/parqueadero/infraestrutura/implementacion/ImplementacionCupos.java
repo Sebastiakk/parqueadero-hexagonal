@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio.PuertoRepositorioCupo;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.mapper.MapperCupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistencia.EntityCupos;
@@ -12,6 +12,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.repositorio
 
 /**
  * ImplementacionCupos
+ * NOTE nombre completo con la BD que se este utilizando para el query
  */
 @Repository
 public class ImplementacionCupos implements PuertoRepositorioCupo {
@@ -25,7 +26,7 @@ public class ImplementacionCupos implements PuertoRepositorioCupo {
     }
 
     @Override
-    public List<ModelCupos> list() {
+    public List<Cupos> list() {
         return mapper.listConvertToDomain(query.findAll());
     }
 
@@ -40,13 +41,13 @@ public class ImplementacionCupos implements PuertoRepositorioCupo {
     }
 
     @Override
-    public ModelCupos create(ModelCupos cupo) {
+    public Cupos crear(Cupos cupo) {
         EntityCupos data = mapper.convertirEntity(cupo);
         return mapper.convertirModel(query.save(data));
     }
 
     @Override
-    public ModelCupos buscarPlaca(String placa) {
+    public Cupos buscarPlaca(String placa) {
         return mapper.convertirModel(query.buscarPorPlaca(placa));
     }
 

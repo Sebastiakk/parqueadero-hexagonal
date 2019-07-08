@@ -13,7 +13,7 @@ import lombok.Setter;
 @Getter
 @Setter
 
-public class ModelCupos {
+public class Cupos {
 
     private long idCupo;
     private String placa;
@@ -23,10 +23,7 @@ public class ModelCupos {
     private int cilindraje;
     private int valor;
 
-    public ModelCupos() {
-    }
-
-    public ModelCupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo, int cilindraje,
+    public Cupos(long idCupo, String placa, Date horaEntrada, Date horaSalida, String tipoVehiculo, int cilindraje,
             int valor) {
         this.validarArgumentos(placa, tipoVehiculo, cilindraje);
         this.idCupo = idCupo;
@@ -40,9 +37,9 @@ public class ModelCupos {
 
     private void validarArgumentos(String placa, String tipoVehiculo, int cilindraje) {
         // Valida que la plata este en la data
-        ValidarArgumentos.exeptionRequired(placa, Constantes.MENSAJE_REQUIRED_PLACA);
+        ValidarArgumentos.exeptionRequerido(placa, Constantes.MENSAJE_REQUIRED_PLACA);
         // Valida que el tipo de vehiculo este en la data
-        ValidarArgumentos.exeptionRequired(tipoVehiculo, Constantes.MENSAJE_REQUIRED_TIPO_VEHICULO);
+        ValidarArgumentos.exeptionRequerido(tipoVehiculo, Constantes.MENSAJE_REQUIRED_TIPO_VEHICULO);
         // Valida que el tipo de vehiculo sea correcto "Moto" o "Carro"
         ValidarArgumentos.exeptionTipoVehiculo(tipoVehiculo, Constantes.MENSAJE_TIPOS_VEHICULO);
 

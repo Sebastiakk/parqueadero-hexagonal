@@ -1,9 +1,9 @@
 package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones;
 
-public class ExeptionRequired extends RuntimeException {
+public class ExeptionRequerido extends RuntimeException {
     private static final long serialVersionUID = 1L;
 
-    public ExeptionRequired(String message) {
+    public ExeptionRequerido(String message) {
         super(message);
     }
 }

@@ -4,7 +4,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.Registe
 import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.handler.ActualizarHandler;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.handler.RegistrarHandler;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.consultas.ListadoCupos;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 
 import java.util.List;
 
@@ -29,17 +29,17 @@ public class ApiParqueadero {
     }
 
     @GetMapping()
-    public List<ModelCupos> list() {
+    public List<Cupos> listar() {
         return this.listarHandler.listarCupos();
     }
 
     @PostMapping
-    public ModelCupos guardarVehiculo(@RequestBody RegisterCommand body) {
-        return this.registerHandler.create(body);
+    public Cupos guardarVehiculo(@RequestBody RegisterCommand body) {
+        return this.registerHandler.crear(body);
     }
 
     @PutMapping("/{placa}")
-    public ModelCupos salidaVehiculo(@PathVariable("placa") String placa) {
+    public Cupos salidaVehiculo(@PathVariable("placa") String placa) {
         return this.actualizarHandler.actualizar(placa);
     }
 }

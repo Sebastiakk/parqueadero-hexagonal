@@ -8,7 +8,7 @@ import org.junit.Test;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ValidarArgumentos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionDiferenteCero;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionPlaca;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionRequired;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionRequerido;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionTipoVehiculo;
 
 public class ValidadorArgumentosTest {
@@ -28,9 +28,9 @@ public class ValidadorArgumentosTest {
 	@Test
 	public void argumentoDatosRequeridos() {
 		try {
-			ValidarArgumentos.exeptionRequired(null, Constantes.MENSAJE_REQUIRED);
+			ValidarArgumentos.exeptionRequerido(null, Constantes.MENSAJE_REQUIRED);
 			fail();
-		} catch (ExeptionRequired e) {
+		} catch (ExeptionRequerido e) {
 			assertEquals(e.getMessage(), Constantes.MENSAJE_REQUIRED);
 		}
 	}

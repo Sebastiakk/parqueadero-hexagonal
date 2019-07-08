@@ -2,7 +2,7 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.consultas;
 
 import java.util.List;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioListarCupos;
 
 /**
@@ -16,7 +16,7 @@ public class ListadoCupos {
         this.cupos = cupos;
     }
 
-    public List<ModelCupos> listarCupos() {
+    public List<Cupos> listarCupos() {
         return cupos.listar();
     }
 

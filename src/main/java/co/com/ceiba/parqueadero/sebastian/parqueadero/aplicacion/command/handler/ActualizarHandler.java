@@ -1,6 +1,6 @@
 package co.com.ceiba.parqueadero.sebastian.parqueadero.aplicacion.command.handler;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.servicios.ServicioActualizarCupo;
 
 public class ActualizarHandler {
@@ -11,7 +11,7 @@ public class ActualizarHandler {
         this.servicioCupos = servicioCupos;
     }
 
-    public ModelCupos actualizar(String placa) {
+    public Cupos actualizar(String placa) {
         return this.servicioCupos.actualizar(placa);
     }
 

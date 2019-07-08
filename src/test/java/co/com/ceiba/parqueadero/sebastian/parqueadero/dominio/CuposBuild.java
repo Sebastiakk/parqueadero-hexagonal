@@ -2,7 +2,7 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio;
 
 import java.util.Date;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 
 /**
  * CuposBuildTest
@@ -55,8 +55,8 @@ public class CuposBuild {
         return this;
     }
 
-    public ModelCupos build() {
-        return new ModelCupos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje, valor);
+    public Cupos build() {
+        return new Cupos(idCupo, placa, horaEntrada, horaSalida, tipoVehiculo, cilindraje, valor);
     }
 
 }

@@ -4,7 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionExiste;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
@@ -21,11 +21,11 @@ public class ServicioGuardarVehiculo {
         this.repo = repoCupos;
     }
 
-    public ModelCupos create(ModelCupos data) {
+    public Cupos crear(Cupos data) {
         this.existe(data.getPlaca());
         this.catidadTipoVehiculo(data.getTipoVehiculo());
         this.validarPrimeraLetraPlaca(data.getPlaca(), data.getHoraEntrada());
-        return this.repo.create(data);
+        return this.repo.crear(data);
     }
 
     private void existe(String placa) {

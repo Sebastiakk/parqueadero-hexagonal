@@ -10,6 +10,7 @@ import co.com.ceiba.parqueadero.sebastian.parqueadero.infraestrutura.persistenci
  * RepoCupos
  * 
  * Este es el repositorio en donde se encuentran todas las consultas
+ * NOTE tiene que estar en la carpeta de persistencia
  */
 public interface RepoCupos extends CrudRepository<EntityCupos, Long> {
 

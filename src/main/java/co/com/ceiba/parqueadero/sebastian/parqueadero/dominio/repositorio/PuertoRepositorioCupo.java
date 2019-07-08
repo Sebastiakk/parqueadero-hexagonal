@@ -2,20 +2,20 @@ package co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.repositorio;
 
 import java.util.List;
 
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 
 /**
  * RepoCupos
  */
 public interface PuertoRepositorioCupo {
 
-    ModelCupos create(ModelCupos cupo);
+    Cupos crear(Cupos cupo);
 
-    List<ModelCupos> list();
+    List<Cupos> list();
 
     int countTipoVehiculo(String tipo);
 
-    ModelCupos buscarPlaca(String placa);
+    Cupos buscarPlaca(String placa);
 
     boolean existe(String placa);
 }

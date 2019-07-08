@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.Constantes;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.CuposBuild;
-import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.ModelCupos;
+import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.cupos.Cupos;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoAutorizado;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExceptionNoExiste;
 import co.com.ceiba.parqueadero.sebastian.parqueadero.dominio.modelos.exepciones.ExeptionCapacidadMaxima;
@@ -50,10 +50,10 @@ public class ServicioTest {
     @Test
     public void crearCarro() {
         // Arrange
-        ModelCupos modelCupos = this.build.build();
-        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        Cupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.crear(modelCupos)).thenReturn(modelCupos);
         // Act
-        ModelCupos copia = servicioGuardar.create(modelCupos);
+        Cupos copia = servicioGuardar.crear(modelCupos);
         // Assert
         assertEquals(copia.getIdCupo(), modelCupos.getIdCupo());
     }
@@ -63,10 +63,10 @@ public class ServicioTest {
         // Arrange
         this.build.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO);
         this.build.cilindraje(Constantes.CILINDRAJE);
-        ModelCupos modelCupos = this.build.build();
-        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        Cupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.crear(modelCupos)).thenReturn(modelCupos);
         // Act
-        ModelCupos copia = servicioGuardar.create(modelCupos);
+        Cupos copia = servicioGuardar.crear(modelCupos);
         // Assert
         assertEquals(copia.getIdCupo(), modelCupos.getIdCupo());
     }
@@ -74,11 +74,11 @@ public class ServicioTest {
     @Test
     public void cantidadMaximaCarro() {
         // Arrange
-        ModelCupos modelCupos = this.build.build();
+        Cupos modelCupos = this.build.build();
         when(puertoRepositorioCupo.countTipoVehiculo(Constantes.TIPO_VEHICULO_CARRO)).thenReturn(Constantes.MAX_CARRO);
         // Act
         try {
-            servicioGuardar.create(modelCupos);
+            servicioGuardar.crear(modelCupos);
             fail();
         } catch (ExeptionCapacidadMaxima err) {
             // Assert
@@ -91,11 +91,11 @@ public class ServicioTest {
         // Arrange
         this.build.tipoVehiculo(Constantes.TIPO_VEHICULO_MOTO);
         this.build.cilindraje(Constantes.CILINDRAJE);
-        ModelCupos modelCupos = this.build.build();
+        Cupos modelCupos = this.build.build();
         when(puertoRepositorioCupo.countTipoVehiculo(Constantes.TIPO_VEHICULO_MOTO)).thenReturn(Constantes.MAX_MOTO);
         // Act
         try {
-            servicioGuardar.create(modelCupos);
+            servicioGuardar.crear(modelCupos);
             fail();
         } catch (ExeptionCapacidadMaxima err) {
             // Assert
@@ -112,11 +112,11 @@ public class ServicioTest {
         this.build.placa(Constantes.PLACA_CON_A);
         this.build.horaEntrada(horaEntrada.getTime());
 
-        ModelCupos modelCupos = this.build.build();
-        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        Cupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.crear(modelCupos)).thenReturn(modelCupos);
         // Act
         try {
-            servicioGuardar.create(modelCupos);
+            servicioGuardar.crear(modelCupos);
             fail();
         } catch (ExceptionNoAutorizado err) {
             // Assert
@@ -136,8 +136,8 @@ public class ServicioTest {
     @Test
     public void actualizarCupoSiExisteElVehiculo() {
         // Arrange
-        ModelCupos modelCupos = this.build.build();
-        when(puertoRepositorioCupo.create(modelCupos)).thenReturn(modelCupos);
+        Cupos modelCupos = this.build.build();
+        when(puertoRepositorioCupo.crear(modelCupos)).thenReturn(modelCupos);
         // Act
         try {
             servicioActualizar.actualizar(modelCupos.getPlaca());
@@ -147,28 +147,5 @@ public class ServicioTest {
             assertEquals(Constantes.MENSAJE_VEHICULO_NO_EXISTENTE, e.getMessage());
         }
     }
-
-    
-    // @Test
-    // public void validarPecio() {
-    // // Arrange
-    // int valueForHour = 1000;
-    // int hour = 6;
-    // Calendar cal = Calendar.getInstance();
-    // cal.setTime(new Date());
-
-    // cal.set(Calendar.HOUR, cal.get(Calendar.HOUR) - hour);
-
-    // ModelCupos modelCupos = this.build.build();
-    // this.build.horaSalida(cal.getTime());
-    // ServicioGuardarVehiculo guardar = new
-    // ServicioGuardarVehiculo(puertoRepositorioCupo);
-    // ServicioActualizarCupo actualizar = new
-    // ServicioActualizarCupo(puertoRepositorioCupo);
-    // when(puertoRepositorioCupo.buscarPlaca(modelCupos.getPlaca())).thenReturn(modelCupos);
-    // // Act
-    // actualizar.actualizar(modelCupos.getPlaca());
-    // assertEquals((valueForHour * hour), modelCupos.getValor(), 0);
-    // }
 
 }

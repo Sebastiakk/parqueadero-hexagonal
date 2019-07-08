@@ -18,9 +18,9 @@ public final class ValidarArgumentos {
         }
     }
 
-    public static void exeptionRequired(Object data, String mensaje) {
+    public static void exeptionRequerido(Object data, String mensaje) {
         if (data == null || data.equals(Constantes.TEXT_VACIO)) {
-            throw new ExeptionRequired(mensaje);
+            throw new ExeptionRequerido(mensaje);
         }
     }
 
