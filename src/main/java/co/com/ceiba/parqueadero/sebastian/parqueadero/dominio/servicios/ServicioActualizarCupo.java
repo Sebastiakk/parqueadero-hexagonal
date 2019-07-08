@@ -34,32 +34,36 @@ public class ServicioActualizarCupo {
     }
 
     private int calcularPrecio(Cupos cupo) {
-        float precio = 0;
         long tiempoParqueado = cupo.getHoraSalida().getTime() - cupo.getHoraEntrada().getTime();
         long minutos = TimeUnit.MILLISECONDS.toMinutes(tiempoParqueado);
         tiempoParqueado = TimeUnit.MILLISECONDS.toHours(tiempoParqueado);
         long dias = (tiempoParqueado / 24);
-        long horasSobrantes = (tiempoParqueado - (dias * 24));
+        long horas = (tiempoParqueado - (dias * 24));
         if (minutos % 60 > 0) {
-            horasSobrantes++;
+            horas++;
         }
-        if (horasSobrantes >= 9) {
+        if (horas >= 9) {
             dias++;
-            horasSobrantes = 0;
+            horas = 0;
         }
-        if (horasSobrantes == 0 && dias == 0) {
-            horasSobrantes = 1;
+        if (horas == 0 && dias == 0) {
+            horas = 1;
         }
+
+        return retornarValor(cupo, dias, horas);
+    }
+
+    public int retornarValor(Cupos cupo, long dias, long horas) {
+        float precio = 0;
         if (cupo.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_MOTO)) {
             precio += dias * Constantes.PRECIO_DIA_MOTO;
-            precio += horasSobrantes * Constantes.PRECIO_HORA_HORA;
+            precio += horas * Constantes.PRECIO_HORA_HORA;
             if (cupo.getCilindraje() > 500) {
                 precio += Constantes.PRECIO_CILINDRAJE;
             }
-        }
-        if (cupo.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO)) {
+        } else if (cupo.getTipoVehiculo().equalsIgnoreCase(Constantes.TIPO_VEHICULO_CARRO)) {
             precio += dias * Constantes.PRECIO_DIA_CARRO;
-            precio += horasSobrantes * Constantes.PRECIO_HORA_CARRO;
+            precio += horas * Constantes.PRECIO_HORA_CARRO;
         }
         return (int) precio;
     }
